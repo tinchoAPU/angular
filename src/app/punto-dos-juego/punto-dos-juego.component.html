@@ -1,0 +1,12 @@
+<div>
+  <div class="col-3">
+    <button type="button" *ngFor="let letra of letras" class="btn btn-primary boton-letra-juego" (click)="verificarCoincidencia($event)" value="{{letra}}">  {{letra}}  </button>
+  </div>
+  <div class="card" style="width: 18rem;">
+    <img src="{{estadoJuego.imagen}}" alt="estado_juego">
+    <div class="card-body">
+      <h5 class="card-title">{{palabraProgreso}}</h5>
+    </div>
+  </div>
+</div>
+
