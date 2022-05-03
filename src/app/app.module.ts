@@ -9,6 +9,7 @@ import { HomeComponent } from './home/home.component';
 import { PuntoUnoSliderNoticiasComponent } from './punto-uno-slider-noticias/punto-uno-slider-noticias.component';
 import { PuntoDosJuegoComponent } from './punto-dos-juego/punto-dos-juego.component';
 import { ShowModalComponent } from './show-modal/show-modal.component';
+import { PruebaComponent } from './prueba/prueba.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { ShowModalComponent } from './show-modal/show-modal.component';
     HomeComponent,
     PuntoUnoSliderNoticiasComponent,
     PuntoDosJuegoComponent,
-    ShowModalComponent
+    ShowModalComponent,
+    PruebaComponent
   ],
   imports: [
     BrowserModule,
