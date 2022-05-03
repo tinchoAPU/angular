@@ -8,6 +8,7 @@ import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { PuntoUnoSliderNoticiasComponent } from './punto-uno-slider-noticias/punto-uno-slider-noticias.component';
 import { PuntoDosJuegoComponent } from './punto-dos-juego/punto-dos-juego.component';
+import { ShowModalComponent } from './show-modal/show-modal.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { PuntoDosJuegoComponent } from './punto-dos-juego/punto-dos-juego.compon
     FooterComponent,
     HomeComponent,
     PuntoUnoSliderNoticiasComponent,
-    PuntoDosJuegoComponent
+    PuntoDosJuegoComponent,
+    ShowModalComponent
   ],
   imports: [
     BrowserModule,

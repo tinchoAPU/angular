@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, TemplateRef, ViewChild, ViewContainerRef} from '@angular/core';
 import {EstadoJuego} from '../models/estado-juego';
 
 @Component({
@@ -7,6 +7,11 @@ import {EstadoJuego} from '../models/estado-juego';
   styleUrls: ['./punto-dos-juego.component.css']
 })
 export class PuntoDosJuegoComponent implements OnInit {
+
+  // tslint:disable-next-line:variable-name
+  @ViewChild('modal_1') modal_1: TemplateRef<any>;
+  @ViewChild('vc', {read: ViewContainerRef}) vc: ViewContainerRef;
+  backdrop: any
 
   constructor() { }
   bancoPalabras: Array<string>;
@@ -92,14 +97,16 @@ iniciarLetras(): void{
 
       });
       if (this.palabraAAdivinar.localeCompare(this.palabraProgreso) === 0){
-        window.alert('Ha ganado el juego');
+        this.showDialog();
+        // tslint:disable-next-line:no-console
+        console.info('Ha ganado el juego');
       }
     }else{
       this.intentosJugada--;
       console.error('Vidas restantes:' + this.intentosJugada);
       this.estadoJuego = this.cambiarEstadoJuego(this.estadoJuego.idEstado);
       if (this.intentosJugada === 0){
-        window.alert('Ha perdido el juego');
+        this.showDialog();
       }
     }
   }
@@ -114,6 +121,27 @@ iniciarLetras(): void{
     });
     console.log('Indices de la letra ' + letraSeleccionada + ' | ' + indicesOcurrencia);
     return indicesOcurrencia;
+  }
+
+  // tslint:disable-next-line:typedef
+  showDialog(){
+    const view = this.modal_1.createEmbeddedView(null);
+    this.vc.insert(view);
+    this.modal_1.elementRef.nativeElement.previousElementSibling.classList.remove('fade');
+    this.modal_1.elementRef.nativeElement.previousElementSibling.classList.add('modal-open');
+    this.modal_1.elementRef.nativeElement.previousElementSibling.style.display = 'block';
+    this.backdrop = document.createElement('DIV')
+    this.backdrop.className = 'modal-backdrop';
+    document.body.appendChild(this.backdrop);
+  }
+
+  // tslint:disable-next-line:typedef
+  closeDialog() {
+    this.vc.clear()
+    document.body.removeChild(this.backdrop);
+  }
+  obtenerResultadoJuego(): string{
+    return (this.intentosJugada === 0) ? 'perdido' : 'ganado';
   }
 
 }
