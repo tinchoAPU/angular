@@ -24,12 +24,25 @@ export class PuntoDosJuegoComponent implements OnInit {
   letras: Array<string>;
 
   ngOnInit(): void {
+    // this.iniciarJuego();
     this.iniciarBancoPalabras();
     this.iniciarIntentos();
     this.iniciarLetras();
     this.iniciarEstadosJuego();
     this.iniciarPalabras();
   }
+
+  iniciarJuego(): void{
+    window.location.reload();
+
+   /* this.iniciarBancoPalabras();
+    this.iniciarIntentos();
+    this.iniciarLetras();
+    this.iniciarEstadosJuego();
+    this.iniciarPalabras();
+    document.getElementsByClassName('boton-letra-juego');*/
+  }
+
   iniciarBancoPalabras(): void{
     this.bancoPalabras = new Array<string>();
     this.bancoPalabras.push('rinoceronte');
@@ -101,10 +114,18 @@ iniciarLetras(): void{
         // tslint:disable-next-line:no-console
         console.info('Ha ganado el juego');
       }
+      // @ts-ignore
+      event.target.className = 'btn btn-success boton-letra-juego';
+      // @ts-ignore
+      event.target.disabled = true;
     }else{
       this.intentosJugada--;
       console.error('Vidas restantes:' + this.intentosJugada);
       this.estadoJuego = this.cambiarEstadoJuego(this.estadoJuego.idEstado);
+      // @ts-ignore
+      event.target.className = 'btn btn-danger boton-letra-juego';
+      // @ts-ignore
+      event.target.disabled = true;
       if (this.intentosJugada === 0){
         this.showDialog();
       }

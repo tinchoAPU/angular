@@ -1,13 +1,26 @@
-<div>
-  <div class="col-3">
-    <button type="button" *ngFor="let letra of letras" class="btn btn-primary boton-letra-juego" (click)="verificarCoincidencia($event)" value="{{letra}}">  {{letra}}  </button>
-  </div>
+
+<div class="container">
+
+<div class="row">
+
+  <div class="col-8">
   <div class="card" style="width: 18rem;">
     <img src="{{estadoJuego.imagen}}" alt="estado_juego">
     <div class="card-body">
       <h5 class="card-title">{{palabraProgreso}}</h5>
+      <button type="button" class="btn btn-success" (click)="iniciarJuego()"> Jugar de nuevo </button>
+
+      <label>Intentos restantes: </label> {{intentosJugada}}
     </div>
   </div>
+  </div>
+
+  <div class="col-4">
+    <button type="button" *ngFor="let letra of letras" class="btn btn-primary boton-letra-juego" (click)="verificarCoincidencia($event)" value="{{letra}}">  {{letra}}  </button>
+  </div>
+
+</div>
+
 </div>
 
 <ng-container #vc></ng-container>
@@ -17,12 +30,12 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header"> <button type="button" class="close" data-dismiss="modal" aria-hidden="true" (click)="closeDialog()"> &times; </button>
-          <h4 class="modal-title" id="myModalLabel"> This Modal title
+          <h4 class="modal-title" id="myModalLabel"> Estado del Juego
           </h4>
         </div>
         <div class="modal-body">Usted ha {{obtenerResultadoJuego()}} el juego</div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal" (click)="closeDialog()">Close </button>
+          <button type="button" class="btn btn-default" data-dismiss="modal" (click)="closeDialog()">Cerrar </button>
         </div>
       </div>
       <!-- /.modal-content -->

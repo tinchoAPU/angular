@@ -1,8 +1,10 @@
+<div class="container">
 <div id="carouselControls" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-inner">
     <div *ngFor="let noticia of noticias; index as indice" [ngClass]="indice == 0 ? 'carousel-item active': 'carousel-item'">
       <h3>{{noticia.titulo}}</h3>
-      <img src="{{noticia.imagen}}" class="d-block w-80" alt="slide_{{indice}}">
+      <img src="{{noticia.imagen}}" class="d-block w-100" alt="slide_{{indice}}">
+      <p>{{noticia.noticia}}</p>
     </div>
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselControls" data-bs-slide="prev">
@@ -13,4 +15,5 @@
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Anterior</span>
   </button>
+</div>
 </div>
