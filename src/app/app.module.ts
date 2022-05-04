@@ -10,6 +10,8 @@ import { PuntoUnoSliderNoticiasComponent } from './punto-uno-slider-noticias/pun
 import { PuntoDosJuegoComponent } from './punto-dos-juego/punto-dos-juego.component';
 import { ShowModalComponent } from './show-modal/show-modal.component';
 import { PruebaComponent } from './prueba/prueba.component';
+import { PuntoTresEmpresaTurismoComponent } from './punto-tres-empresa-turismo/punto-tres-empresa-turismo.component';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,12 +22,14 @@ import { PruebaComponent } from './prueba/prueba.component';
     PuntoUnoSliderNoticiasComponent,
     PuntoDosJuegoComponent,
     ShowModalComponent,
-    PruebaComponent
+    PruebaComponent,
+    PuntoTresEmpresaTurismoComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        FormsModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
