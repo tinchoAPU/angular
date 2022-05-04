@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Pasaje} from '../models/pasaje';
+import {PasajeService} from '../services/pasaje.service';
 
 @Component({
   selector: 'app-punto-tres-empresa-turismo',
@@ -9,19 +10,40 @@ import {Pasaje} from '../models/pasaje';
 export class PuntoTresEmpresaTurismoComponent implements OnInit {
   pasaje: Pasaje;
   pasajes: Array<Pasaje>;
-  constructor() {
+  resumenVentas: any;
+  constructor(private pasajeService: PasajeService) {
+    pasajeService = new PasajeService();
     this.pasaje = new Pasaje();
+    this.resumenVentas = {};
     this.pasajes = new Array<Pasaje>();
   }
 
   ngOnInit(): void {
   }
 
+  // tslint:disable-next-line:typedef
+  obtenerPasajes(){
+    return this.pasajeService.obtenerPasajes();
+  }
+
+// tslint:disable-next-line:typedef
+  guardarPasaje() {
+    const pasaje = new Pasaje();
+    pasaje.categoria = this.pasaje.categoria;
+    pasaje.nombrePasajero = this.pasaje.nombrePasajero;
+    pasaje.precio = this.pasaje.precio;
+    pasaje.dni = this.pasaje.dni;
+    this.pasajeService.guardarPasaje(pasaje);
+    this.pasaje = new Pasaje();
+    this.obtenerResumenVentas();
+  }
+
+  // tslint:disable-next-line:typedef
+  obtenerResumenVentas() {
+    this.resumenVentas =  this.pasajeService.obtenerResumenVentas();
+  }
 
   calcularPrecioConDescuento(): number {
-    console.log('init metodo');
-    console.log('categoria: ' + this.pasaje.categoria);
-    console.log('precio: ' + this.pasaje.precio);
     if (this.pasaje.categoria && this.pasaje.precio) {
       switch (this.pasaje.categoria) {
         case 'm': {
