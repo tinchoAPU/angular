@@ -12,6 +12,8 @@ import { ShowModalComponent } from './show-modal/show-modal.component';
 import { PruebaComponent } from './prueba/prueba.component';
 import { PuntoTresEmpresaTurismoComponent } from './punto-tres-empresa-turismo/punto-tres-empresa-turismo.component';
 import {FormsModule} from '@angular/forms';
+import { PrintJsComponent } from './printers/print-js/print-js.component';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -23,13 +25,15 @@ import {FormsModule} from '@angular/forms';
     PuntoDosJuegoComponent,
     ShowModalComponent,
     PruebaComponent,
-    PuntoTresEmpresaTurismoComponent
+    PuntoTresEmpresaTurismoComponent,
+    PrintJsComponent
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        FormsModule
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

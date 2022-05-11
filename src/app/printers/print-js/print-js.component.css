@@ -1,0 +1,13 @@
+
+#content {
+  position: relative;
+}
+#content>a {
+  position: absolute;
+  top: 160px;
+  right: 225px;
+  color: white;
+  font-weight: bolder;
+  font-size: 32px;
+}
+
